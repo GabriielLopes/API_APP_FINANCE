@@ -11,7 +11,7 @@ const router = new Router();
 // router.get('/:id', userController.show); // Lista usuário
 
 router.post('/', userController.create); // Cria usuário
-router.put('/', loginRequired, userController.update); // Atualiza usuário -> PUXAR ID PELO TOKEN
+router.put('/',loginRequired, userController.update); // Atualiza usuário -> PUXAR ID PELO TOKEN
 router.delete('/', loginRequired, userController.delete); // Deleta usuário -> PUXAR ID PELO TOKEN
 
 export default router;

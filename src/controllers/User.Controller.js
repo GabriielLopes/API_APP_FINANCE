@@ -8,7 +8,7 @@ class UserController {
       return res.json({ id, nome, email }); // Retorna o usuário recém-criado
     } catch (e) {
       return res.status(400).json({ // Retorna erro 400 (Bad Request)
-        errors: e.errors.map((err) => err.message), // Mensagem de erro personalizada
+        errors: ['O e-mail já está cadastrado!'],
       });
     }
   }
