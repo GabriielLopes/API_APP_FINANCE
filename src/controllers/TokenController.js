@@ -41,7 +41,7 @@ class TokenController {
     });
 
     // Retorna o token na resposta
-    return res.json({ token, user: { nome: user.nome, id, email } });
+    return res.json({ tokens: token });
   }
 }
 

@@ -19,14 +19,10 @@ const whiteList = [
 ];
 
 const corsOptions = {
-  origin(origin, callback) {
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
+  origin: function (origin, callback) {
+    
+  }
+}
 
 // Carrega as variáveis de ambiente do arquivo '.env'
 dotenv.config();
@@ -41,7 +37,7 @@ class App {
 
   middlewares() {
     // eslint-disable-next-line max-len
-    this.app.use(cors(corsOptions));
+    this.app.use(cors());
     this.app.use((helmet()));
     this.app.use(express.urlencoded({ extended: true }));// Habilita o parser de dados do formulário
     this.app.use(express.json()); // Habilita o parser de dados JSON
