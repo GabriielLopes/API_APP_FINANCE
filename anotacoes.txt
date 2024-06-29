@@ -1,0 +1,4 @@
+npx sequelize migration:create --name=usuarios --> criar nova migration "Nova tabela no banco de dados".
+npx sequelize db:migrate --> subir os migrate para a base de dados
+
+

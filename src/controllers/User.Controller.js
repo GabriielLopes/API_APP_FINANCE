@@ -1,11 +1,15 @@
 import User from '../models/User'; // Importa o modelo de usuário
+import UserConfig from '../models/UserConfig';
 
 class UserController {
   async create(req, res) {
     try {
       const novoUser = await User.create(req.body); // Cria um novo usuário
       const { id, nome, email } = novoUser;
-      return res.json({ id, nome, email }); // Retorna o usuário recém-criado
+      const userConfig = await UserConfig.create({ user_id: id });
+      return res.json({
+        id, nome, email, userConfig,
+      }); // Retorna o usuário recém-criado
     } catch (e) {
       return res.status(400).json({ // Retorna erro 400 (Bad Request)
         errors: ['O e-mail já está cadastrado!'],

@@ -10,16 +10,25 @@ import delay from 'express-delay';
 
 // Importação das rotas
 import './src/database';
-import homeRoutes from './src/routes/home.Routes'; // Importa as rotas do arquivo 'home.Routes'
 import userRoutes from './src/routes/user.Routes'; // Importa as rotas do arquivo 'user.Routes'
 import tokenRoutes from './src/routes/token.Routes'; // Importa as rotas do arquivo 'token.Routes'
-import alunoRoutes from './src/routes/aluno.Routes'; // Importa as rotas do arquivo 'aluno.Routes'
-import fotoRoutes from './src/routes/foto.Routes'; // Importa as rotas do arquivo 'foto.Routes'
+import categoriaRoutes from './src/routes/categoria.Routes';
+import contaRoutes from './src/routes/conta.Routes';
+import transacoesRoutes from './src/routes/transacoes.Routes';
+import gastosfixosRoutes from './src/routes/gastosfixos.Routes';
+import fotoRoutes from './src/routes/foto.Routes';
+import userConfigRoutes from './src/routes/userConfig.Routes';
 
 const whiteList = [
   'http://localhost:3000',
+  'http://192.168.18.7',
+  'http://192.168.18.7:3000',
   'http://10.101.224.85:3000',
   'http://192.168.63.10:3000',
+  '192.168.18.19',
+  'http://10.101.224.41:3000',
+  '10.101.224.41:3000',
+  'http://192.168.18.19',
 ];
 
 const corsOptions = {
@@ -63,23 +72,29 @@ class App {
       ],
       // ... outras diretivas CSP ...
     }));
-    this.app.use(delay(2000));
+    this.app.use(delay(1000));
     this.app.use(express.urlencoded({ extended: true }));// Habilita o parser de dados do formulário
     this.app.use(express.json()); // Habilita o parser de dados JSON
     this.app.use(express.static((resolve(__dirname, 'uploads'))));
   }
 
   routes() {
-    // rotas da HomePage
-    this.app.use('/', homeRoutes); // Define a rota raiz '/' para usar as rotas de 'homeRoutes'
     // rotas de usuarios
     this.app.use('/users/', userRoutes); // Define a rota '/users/' para usar as rotas de 'userRoutes'
-    // rotas de token
+    // rotas de tokens
     this.app.use('/tokens/', tokenRoutes);
-    // rotas de alunos
-    this.app.use('/alunos/', alunoRoutes);
-    // rotas de fotos
+    // rotas de categorias
+    this.app.use('/categorias/', categoriaRoutes);
+    // rotas de contas
+    this.app.use('/contas/', contaRoutes);
+    // rotas de transações
+    this.app.use('/transacoes/', transacoesRoutes);
+    // rotas de despesas fixas
+    this.app.use('/gastos-fixos/', gastosfixosRoutes);
+    // rotas de fotos do usuário
     this.app.use('/fotos/', fotoRoutes);
+    // rotas de configurações do aplicativo
+    this.app.use('/user-config', userConfigRoutes);
   }
 }
 

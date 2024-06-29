@@ -1,0 +1,7 @@
+{
+  "dialect": "mariadb",
+  "database": "finance",
+  "username": "root",
+  "password": "Gg6313719@",
+  "models": ["path/to/src/models/*.js"]
+}

@@ -19,16 +19,34 @@ class FotoController {
         }
         const { originalname, filename } = req.file;
 
-        const { aluno_id } = req.body;
+        const { user_id } = req.body;
 
-        const foto = await Foto.create({ originalname, filename, aluno_id });
+        const foto = await Foto.create({ originalname, filename, user_id });
         return res.json(foto);
       } catch (e) {
         return res.status(400).json({
-          errors: ['O aluno não existe!'],
+          errors: ['O usuário não existe!'],
         });
       }
     });
+  }
+
+  async show(req, res) {
+    try {
+      const foto = await Foto.findAll({
+        where: {
+          user_id: req.params.user_id,
+        },
+        order: [
+          ['id', 'DESC'],
+        ],
+      });
+      return res.json(foto);
+    } catch (e) {
+      return res.status(400).json({
+        errors: e,
+      });
+    }
   }
 }
 
