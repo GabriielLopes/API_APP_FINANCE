@@ -38,27 +38,24 @@ export default class Conta extends Model {
   }
 
   async atualizarSaldo(transacoes) {
+    console.log(transacoes.tipo);
     if (transacoes.tipo === 'Receita') {
-      this.saldo += transacoes.valor;
-    } else if (transacoes.tipo === 'Despesa') {
-      if (this.saldo >= transacoes.valor) {
-        this.saldo -= transacoes.valor;
-      } else {
-        console.error('Saldo insuficiente');
-      }
-    } else {
-      console.error('Tipo de transação inválida', transacoes.tipo);
+      this.saldo = parseFloat(this.saldo) + parseFloat(transacoes.valor);
     }
-    await this.save();
+    if (transacoes.tipo === 'Despesa') {
+      if (this.saldo >= transacoes.valor) {
+        this.saldo = parseFloat(this.saldo) - parseFloat(transacoes.valor);
+      }
+    }
+    return this.save();
   }
 
   async reverterSaldo(transacoes) {
     if (transacoes.tipo === 'Receita') {
-      this.saldo -= parseFloat(transacoes.valor);
-    } else if (transacoes.tipo === 'Despesa') {
-      this.saldo += transacoes.valor;
-    } else {
-      console.error('error');
+      this.saldo = parseFloat(this.saldo) - parseFloat(transacoes.valor);
+    }
+    if (transacoes.tipo === 'Despesa') {
+      this.saldo = parseFloat(this.saldo) + parseFloat(transacoes.valor);
     }
     await this.save();
   }

@@ -1,3 +1,3 @@
 export default {
-  url: 'seuip',
+  url: 'http://localhost:3444',
 };

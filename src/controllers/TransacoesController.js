@@ -23,11 +23,12 @@ class TransacoesController {
 
       const novaTransacao = await Transacoes.create(req.body);
 
+      console.log(req.body);
+      await conta.atualizarSaldo(novaTransacao);
+
       const {
         id, data, tipo, descricao,
       } = novaTransacao;
-
-      await conta.atualizarSaldo(novaTransacao);
 
       return res.json({
         id, data, tipo, descricao,

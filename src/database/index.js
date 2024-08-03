@@ -7,8 +7,13 @@ import Transacoes from '../models/Transacoes';
 import Gastosfixos from '../models/Gastosfixos';
 import Foto from '../models/Fotos';
 import UserConfig from '../models/UserConfig';
+import MetasFinanceiras from '../models/MetasFinanceiras';
+import DepositosMetasFinanceiras from '../models/depositosMetasFinanceiras';
+import PlanejamentoMensal from '../models/PlanejamentoMensal';
+import PlanejamentoMensalCategorias from '../models/PlanejamentoMensalCategorias';
 
-const models = [User, Categoria, Conta, Transacoes, Gastosfixos, Foto, UserConfig];
+const models = [User, Categoria, Conta, Transacoes, Gastosfixos, Foto, UserConfig,
+  MetasFinanceiras, DepositosMetasFinanceiras, PlanejamentoMensal, PlanejamentoMensalCategorias];
 
 const connection = new Sequelize(databaseConfig);
 

@@ -16,7 +16,7 @@ class CategoriaController {
 
   async index(req, res) {
     const categorias = await Categoria.findAll({
-      attributes: ['id', 'nome', 'descricao'],
+      attributes: ['id', 'nome', 'descricao', 'icone'],
       order: [['ID', 'DESC']],
     });
     res.json(categorias);

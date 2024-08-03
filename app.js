@@ -6,7 +6,7 @@ import { resolve } from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 
-import delay from 'express-delay';
+// import delay from 'express-delay';
 
 // Importação das rotas
 import './src/database';
@@ -18,17 +18,16 @@ import transacoesRoutes from './src/routes/transacoes.Routes';
 import gastosfixosRoutes from './src/routes/gastosfixos.Routes';
 import fotoRoutes from './src/routes/foto.Routes';
 import userConfigRoutes from './src/routes/userConfig.Routes';
+import metasFinanceirasRoutes from './src/routes/metasFinanceiras.Routes';
+import depositosMetasFinanceirasRoutes from './src/routes/depositosMetasFinanceiras.Routes';
+import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes';
+import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes';
 
 const whiteList = [
   'http://localhost:3000',
-  'http://192.168.18.7',
+  'http://10.101.224.23:3000',
   'http://192.168.18.7:3000',
-  'http://10.101.224.85:3000',
-  'http://192.168.63.10:3000',
-  '192.168.18.19',
-  'http://10.101.224.41:3000',
-  '10.101.224.41:3000',
-  'http://192.168.18.19',
+  'http://10.101.224.124:3000',
 ];
 
 const corsOptions = {
@@ -72,7 +71,7 @@ class App {
       ],
       // ... outras diretivas CSP ...
     }));
-    this.app.use(delay(1000));
+    // this.app.use(delay(0));
     this.app.use(express.urlencoded({ extended: true }));// Habilita o parser de dados do formulário
     this.app.use(express.json()); // Habilita o parser de dados JSON
     this.app.use(express.static((resolve(__dirname, 'uploads'))));
@@ -94,7 +93,15 @@ class App {
     // rotas de fotos do usuário
     this.app.use('/fotos/', fotoRoutes);
     // rotas de configurações do aplicativo
-    this.app.use('/user-config', userConfigRoutes);
+    this.app.use('/user-config/', userConfigRoutes);
+    // rotas de metas financeiras
+    this.app.use('/metas-financeiras/', metasFinanceirasRoutes);
+    // rotas de depositos de metas financeiras
+    this.app.use('/depositar-metas-financeiras', depositosMetasFinanceirasRoutes);
+    // rotas de planejamentos mensais
+    this.app.use('/planejamento-mensal/', planejamentoMensalRoutes);
+    // rotas de planejamentos mensais categorias
+    this.app.use('/planejamento-mensal-categorias/', planejamentoMensalCategoriasRoutes);
   }
 }
 
