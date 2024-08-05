@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node ./src/server.js",
-    "vercel-build": "npx sequelize db:migrate deploy",
+    "vercel-build": "npx sequelize db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/server.js"
   },
