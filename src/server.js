@@ -1,7 +1,7 @@
 // Importa o módulo 'app' do arquivo './app.js'
 import app from '../app';
 
-const port = 3444;
+const port = process.env.PORT || 3001;
 
 // Inicia o servidor na porta 3000 e imprime uma mensagem no console
 app.listen(port, () => {
