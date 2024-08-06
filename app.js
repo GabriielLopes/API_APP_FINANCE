@@ -24,10 +24,7 @@ import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes';
 import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes';
 
 const whiteList = [
-  'http://localhost:3000',
-  'http://10.101.224.23:3000',
-  'http://192.168.18.7:3000',
-  'http://10.101.224.124:3000',
+  'app-finance-git-master-gibilopes-projects.vercel.app',
 ];
 
 const corsOptions = {
