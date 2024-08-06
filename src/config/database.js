@@ -8,6 +8,7 @@ module.exports = {
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
   PORT: 5432,
+  ssl: 'require',
   define: {
     timestamps: true,
     underscored: true,
