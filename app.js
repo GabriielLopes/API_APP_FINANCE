@@ -3,7 +3,7 @@ import dotenv from 'dotenv'; // Importa o pacote 'dotenv' para gerenciar variáv
 import express from 'express'; // Importa o framework Express.js para criar a aplicação
 import { resolve } from 'path';
 
-// import cors from 'cors';
+import cors from 'cors';
 import helmet from 'helmet';
 
 // import delay from 'express-delay';
@@ -31,12 +31,12 @@ import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalC
   '76.76.21.9',
 ]; */
 
-/* const corsOptions = {
+const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204,
-}; */
+};
 
 // Carrega as variáveis de ambiente do arquivo '.env'
 dotenv.config();
@@ -50,7 +50,7 @@ class App {
 
   middlewares() {
     // eslint-disable-next-line max-len
-    // this.app.use(cors(corsOptions));
+    this.app.use(cors(corsOptions));
     this.app.use(helmet.contentSecurityPolicy({
       defaultSrc: [
         "'self'", // Permitir recursos do mesmo domínio
