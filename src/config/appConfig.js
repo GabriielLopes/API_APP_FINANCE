@@ -1,3 +1,3 @@
 export default {
-  url: 'https://api-app-finance.vercel.app/',
+  url: 'https://api-app-finance.vercel.app',
 };
