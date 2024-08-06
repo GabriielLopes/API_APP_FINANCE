@@ -24,8 +24,9 @@ import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes';
 import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes';
 
 const whiteList = [
-  'app-finance-git-master-gibilopes-projects.vercel.app',
-  'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app',
+  'https://app-finance-git-master-gibilopes-projects.vercel.app/',
+  'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app/users',
+  'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app/users',
 ];
 
 const corsOptions = {
