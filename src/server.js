@@ -9,5 +9,5 @@ app.listen(port, () => {
   console.log();
   // Exibe uma mensagem informando que o servidor está escutando na porta 3000
   // e inclui um link para a página inicial
-  console.log(`Escutando na porta ${port}, clique: http://localhost:${port}`);
+  console.log(`Escutando na porta ${port}, clique: https://api-app-finance.vercel.app:${port}`);
 });
