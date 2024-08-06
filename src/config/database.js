@@ -7,6 +7,7 @@ module.exports = {
   username: process.env.PGUSER,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
+  PORT: 5432,
   define: {
     timestamps: true,
     underscored: true,
