@@ -3,13 +3,14 @@ import dotenv from 'dotenv'; // Importa o pacote 'dotenv' para gerenciar variáv
 import express from 'express'; // Importa o framework Express.js para criar a aplicação
 import { resolve } from 'path';
 
-// import cors from 'cors';
+import cors from 'cors';
 import helmet from 'helmet';
 
 // import delay from 'express-delay';
 
 // Importação das rotas
 import './src/database';
+import homeRoutes from './src/routes/home.Routes';
 import userRoutes from './src/routes/user.Routes'; // Importa as rotas do arquivo 'user.Routes'
 import tokenRoutes from './src/routes/token.Routes'; // Importa as rotas do arquivo 'token.Routes'
 import categoriaRoutes from './src/routes/categoria.Routes';
@@ -31,12 +32,12 @@ import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalC
   '76.76.21.9',
 ]; */
 
-/* const corsOptions = {
+const corsOptions = {
   origin: '*',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   preflightContinue: false,
   optionsSuccessStatus: 204,
-}; */
+};
 
 // Carrega as variáveis de ambiente do arquivo '.env'
 dotenv.config();
@@ -50,7 +51,7 @@ class App {
 
   middlewares() {
     // eslint-disable-next-line max-len
-    // this.app.use(cors(corsOptions));
+    this.app.use(cors(corsOptions));
     this.app.use(helmet.contentSecurityPolicy({
       defaultSrc: [
         "'self'", // Permitir recursos do mesmo domínio
@@ -75,6 +76,8 @@ class App {
   }
 
   routes() {
+    // Rota de home
+    this.app.use('/', homeRoutes);
     // rotas de usuarios
     this.app.use('/users/', userRoutes); // Define a rota '/users/' para usar as rotas de 'userRoutes'
     // rotas de tokens

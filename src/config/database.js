@@ -1,7 +1,9 @@
 // eslint-disable-next-line
-require('dotenv').config();
+import dotenv from 'dotenv';
 
-module.exports = {
+dotenv.config();
+
+export default {
   dialect: 'postgres',
   host: process.env.PGHOST,
   username: process.env.PGUSER,
