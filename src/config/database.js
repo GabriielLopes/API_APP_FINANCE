@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-module.exports = {
+export default {
   dialect: 'postgres',
   host: process.env.PGHOST,
   username: process.env.PGUSER,
@@ -13,14 +13,14 @@ module.exports = {
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // Temporário, não recomendado
-    },
+      rejectUnauthorized: false // Temporário, não recomendado
+    }
   },
   define: {
     timestamps: true,
     underscored: true,
     underscoredAll: true,
     createdAt: 'created_at',
-    updatedAt: 'updated_at',
-  },
+    updatedAt: 'updated_at'
+  }
 };
