@@ -23,22 +23,8 @@ import depositosMetasFinanceirasRoutes from './src/routes/depositosMetasFinancei
 import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes';
 import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes';
 
-const whiteList = [
-  'https://app-finance-git-master-gibilopes-projects.vercel.app/',
-  'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app/users',
-  'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app/users',
-  'https://app-finance-red.vercel.app',
-  '76.76.21.9',
-];
-
 const corsOptions = {
-  origin(origin, callback) {
-    if (whiteList.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: 'https://app-finance-red.vercel.app',
 };
 
 // Carrega as variáveis de ambiente do arquivo '.env'
