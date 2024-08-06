@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "./src/server.js",
+      "src": "/",
       "use": "@vercel/node",
       "config": {
         "runtime": "nodejs20.x"
