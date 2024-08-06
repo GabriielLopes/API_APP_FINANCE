@@ -3,7 +3,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.changeColumn('gastosfixos', 'data_venc', {
       type: Sequelize.DATE,
-      allowNull: true,
+      allowNull: false,
     });
   },
 
