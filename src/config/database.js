@@ -3,7 +3,7 @@ require('dotenv').config();
 
 module.exports = {
   dialect: 'mariadb',
-  host: process.env.DATABASE_URL,
+  host: process.env.PGHOST,
   username: process.env.PGUSER,
   password: process.env.PGPASSWORD,
   database: process.env.PGDATABASE,
