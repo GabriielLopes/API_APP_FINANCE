@@ -10,6 +10,7 @@ import helmet from 'helmet';
 
 // Importação das rotas
 import './src/database';
+import homeRoutes from './src/routes/home.Routes';
 import userRoutes from './src/routes/user.Routes'; // Importa as rotas do arquivo 'user.Routes'
 import tokenRoutes from './src/routes/token.Routes'; // Importa as rotas do arquivo 'token.Routes'
 import categoriaRoutes from './src/routes/categoria.Routes';
@@ -75,6 +76,8 @@ class App {
   }
 
   routes() {
+    // Rota de home
+    this.app.use('/', homeRoutes);
     // rotas de usuarios
     this.app.use('/users/', userRoutes); // Define a rota '/users/' para usar as rotas de 'userRoutes'
     // rotas de tokens
