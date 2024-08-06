@@ -27,6 +27,7 @@ const whiteList = [
   'https://app-finance-git-master-gibilopes-projects.vercel.app/',
   'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app/users',
   'https://api-app-finance-hm6i26lii-gibilopes-projects.vercel.app/users',
+  'https://app-finance-red.vercel.app',
 ];
 
 const corsOptions = {
