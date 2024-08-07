@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import GastosfixosController from '../controllers/GastosfixosController';
-import loginRequired from '../middlewares/loginRequired';
+import GastosfixosController from '../controllers/GastosfixosController.js';
+import loginRequired from '../middlewares/loginRequired.js';
 
 const router = new Router();
 

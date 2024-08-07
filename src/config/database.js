@@ -5,9 +5,9 @@ dotenv.config();
 
 export default {
   dialect: 'postgres',
-  host: process.env.PGHOST,
+  host: process.env.DATABASE_HOST,
   username: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
+  password: process.env.PGPASSSWORD,
   database: process.env.PGDATABASE,
   sslmode: 'require',
   dialectOptions: {
@@ -15,6 +15,7 @@ export default {
       require: true,
       rejectUnauthorized: false, // Temporário, não recomendado
     },
+    rejectUnauthorized: false // Temporário, não recomendado
   },
   define: {
     timestamps: true,

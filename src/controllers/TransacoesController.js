@@ -1,6 +1,6 @@
-import Conta from '../models/Conta';
-import Transacoes from '../models/Transacoes';
-import User from '../models/User';
+import Conta from '../models/Conta.js';
+import Transacoes from '../models/Transacoes.js';
+import User from '../models/User.js';
 
 class TransacoesController {
   async create(req, res) {

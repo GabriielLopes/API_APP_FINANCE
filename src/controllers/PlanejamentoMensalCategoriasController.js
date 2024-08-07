@@ -1,6 +1,6 @@
-import PlanejamentoMensalCategorias from '../models/PlanejamentoMensalCategorias';
-import Categoria from '../models/Categoria';
-import PlanejamentoMensal from '../models/PlanejamentoMensal';
+import PlanejamentoMensalCategorias from '../models/PlanejamentoMensalCategorias.js';
+import Categoria from '../models/Categoria.js';
+import PlanejamentoMensal from '../models/PlanejamentoMensal.js';
 
 class PlanejamentoMensalCategoriasController {
   async create(req, res) {

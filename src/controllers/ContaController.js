@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable camelcase */
-import Conta from '../models/Conta';
-import User from '../models/User';
+import Conta from '../models/Conta.js';
+import User from '../models/User.js';
 
 class ContaController {
   async index(req, res) {

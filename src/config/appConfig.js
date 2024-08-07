@@ -1,3 +1,3 @@
 export default {
-  url: 'http://localhost:9001',
+  url: 'https://api-finance-zeta.vercel.app/',
 };

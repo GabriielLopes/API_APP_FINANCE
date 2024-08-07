@@ -1,5 +1,5 @@
-import DepositosMetasFinanceiras from '../models/depositosMetasFinanceiras';
-import MetasFinanceiras from '../models/MetasFinanceiras';
+import DepositosMetasFinanceiras from '../models/depositosMetasFinanceiras.js';
+import MetasFinanceiras from '../models/MetasFinanceiras.js';
 
 class DepositosMetasFinanceirasController {
   async create(req, res) {

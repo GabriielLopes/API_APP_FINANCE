@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import Categoria from '../models/Categoria';
+import Categoria from '../models/Categoria.js';
 
 class CategoriaController {
   async create(req, res) {

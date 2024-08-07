@@ -1,4 +1,5 @@
-import Sequeline, { Model } from 'sequelize';
+import Sequelize from 'sequelize';
+const Model = Sequelize.Model;
 
 export default class Transacoes extends Model {
   static init(sequelize) {
@@ -6,19 +7,19 @@ export default class Transacoes extends Model {
       {
         // vai as propriedades da tabela.
         data: {
-          type: Sequeline.DATE,
+          type: Sequelize.DATE,
         },
 
         valor: {
-          type: Sequeline.NUMBER,
+          type: Sequelize.NUMBER,
         },
 
         tipo: {
-          type: Sequeline.ENUM('Receita', 'Despesa'),
+          type: Sequelize.ENUM('Receita', 'Despesa'),
         },
 
         descricao: {
-          type: Sequeline.STRING,
+          type: Sequelize.STRING,
         },
       },
       {

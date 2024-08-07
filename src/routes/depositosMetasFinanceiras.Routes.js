@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import loginRequired from '../middlewares/loginRequired';
-import DepositosMetasFinanceirasController from '../controllers/DepositosMetasFinanceirasController';
+import loginRequired from '../middlewares/loginRequired.js';
+import DepositosMetasFinanceirasController from '../controllers/DepositosMetasFinanceirasController.js';
 
 const router = new Router();
 

@@ -1,6 +1,6 @@
-import Planejamentomensal from '../models/PlanejamentoMensal';
-import User from '../models/User';
-import Conta from '../models/Conta';
+import Planejamentomensal from '../models/PlanejamentoMensal.js';
+import User from '../models/User.js';
+import Conta from '../models/Conta.js';
 
 class PlanejamentoMensalController {
   async create(req, res) {

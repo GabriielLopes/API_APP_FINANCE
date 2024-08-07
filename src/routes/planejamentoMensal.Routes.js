@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import loginRequired from '../middlewares/loginRequired';
-import PlanejamentoMensalController from '../controllers/PlanejamentoMensalController';
+import loginRequired from '../middlewares/loginRequired.js';
+import PlanejamentoMensalController from '../controllers/PlanejamentoMensalController.js';
 
 const router = Router();
 

@@ -1,5 +1,5 @@
-import User from '../models/User'; // Importa o modelo de usuário
-import UserConfig from '../models/UserConfig';
+import User from '../models/User.js'; // Importa o modelo de usuário
+import UserConfig from '../models/UserConfig.js';
 
 class UserController {
   async create(req, res) {

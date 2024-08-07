@@ -1,7 +1,11 @@
 // Importação de dependências
 import dotenv from 'dotenv'; // Importa o pacote 'dotenv' para gerenciar variáveis de ambiente --> Gerencia o arquivo que possui dados sensíveis de conexão
 import express from 'express'; // Importa o framework Express.js para criar a aplicação
-import { resolve } from 'path';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import cors from 'cors';
 import helmet from 'helmet';
@@ -9,20 +13,20 @@ import helmet from 'helmet';
 // import delay from 'express-delay';
 
 // Importação das rotas
-import './src/database';
-import homeRoutes from './src/routes/home.Routes';
-import userRoutes from './src/routes/user.Routes'; // Importa as rotas do arquivo 'user.Routes'
-import tokenRoutes from './src/routes/token.Routes'; // Importa as rotas do arquivo 'token.Routes'
-import categoriaRoutes from './src/routes/categoria.Routes';
-import contaRoutes from './src/routes/conta.Routes';
-import transacoesRoutes from './src/routes/transacoes.Routes';
-import gastosfixosRoutes from './src/routes/gastosfixos.Routes';
-import fotoRoutes from './src/routes/foto.Routes';
-import userConfigRoutes from './src/routes/userConfig.Routes';
-import metasFinanceirasRoutes from './src/routes/metasFinanceiras.Routes';
-import depositosMetasFinanceirasRoutes from './src/routes/depositosMetasFinanceiras.Routes';
-import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes';
-import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes';
+import './src/database/index.js';
+import homeRoutes from './src/routes/home.Routes.js';
+import userRoutes from './src/routes/user.Routes.js'; // Importa as rotas do arquivo 'user.Routes'
+import tokenRoutes from './src/routes/token.Routes.js'; // Importa as rotas do arquivo 'token.Routes'
+import categoriaRoutes from './src/routes/categoria.Routes.js';
+import contaRoutes from './src/routes/conta.Routes.js';
+import transacoesRoutes from './src/routes/transacoes.Routes.js';
+import gastosfixosRoutes from './src/routes/gastosfixos.Routes.js';
+import fotoRoutes from './src/routes/foto.Routes.js';
+import userConfigRoutes from './src/routes/userConfig.Routes.js';
+import metasFinanceirasRoutes from './src/routes/metasFinanceiras.Routes.js';
+import depositosMetasFinanceirasRoutes from './src/routes/depositosMetasFinanceiras.Routes.js';
+import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes.js';
+import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes.js';
 
 /* const whiteList = [
   'https://app-finance-git-master-gibilopes-projects.vercel.app/',
@@ -42,11 +46,21 @@ const corsOptions = {
 // Carrega as variáveis de ambiente do arquivo '.env'
 dotenv.config();
 
+const port = process.env.PORT || 9001;
+
 class App {
   constructor() {
     this.app = express(); // Cria a aplicação Express
     this.middlewares(); // Chama o método para configurar os middlewares
     this.routes(); // Chama o método para configurar as rotas
+    // Inicia o servidor na porta 9001 e imprime uma mensagem no console
+    this.app.listen(port, () => {
+      // Importa uma linha em branco
+      console.log();
+      // Exibe uma mensagem informando que o servidor está escutando na porta 3000
+      // e inclui um link para a página inicial
+      console.log(`Escutando na porta ${port}`);
+    });
   }
 
   middlewares() {
@@ -72,9 +86,8 @@ class App {
     // this.app.use(delay(0));
     this.app.use(express.urlencoded({ extended: true }));// Habilita o parser de dados do formulário
     this.app.use(express.json()); // Habilita o parser de dados JSON
-    this.app.use(express.static((resolve(__dirname, 'uploads'))));
+    this.app.use(express.static(path.join(__dirname,'uploads')));
   }
-
   routes() {
     // Rota de home
     this.app.use('/', homeRoutes);

@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import loginRequired from '../middlewares/loginRequired';
-import ContaController from '../controllers/ContaController';
+import loginRequired from '../middlewares/loginRequired.js';
+import ContaController from '../controllers/ContaController.js';
 
 const router = new Router();
 

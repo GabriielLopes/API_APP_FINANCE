@@ -1,5 +1,6 @@
 // Importa o módulo Sequelize e a classe Model
-import Sequelize, { Model } from 'sequelize';
+import Sequelize from 'sequelize';
+const Model = Sequelize.Model;
 
 // Importa a biblioteca bcryptjs para criptografar senhas
 import bcryptjs from 'bcryptjs';

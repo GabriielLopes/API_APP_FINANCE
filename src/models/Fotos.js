@@ -1,6 +1,7 @@
 // Importa o módulo Sequelize e a classe Model
-import Sequelize, { Model } from 'sequelize';
-import appConfig from '../config/appConfig';
+import Sequelize from 'sequelize';
+const Model = Sequelize.Model;
+import appConfig from '../config/appConfig.js';
 
 // Define a classe 'Foto' como um Model do Sequelize
 export default class Foto extends Model {

@@ -1,4 +1,4 @@
-import UserConfig from '../models/UserConfig';
+import UserConfig from '../models/UserConfig.js';
 
 class UserConfigController {
   async create(req, res) {

@@ -1,4 +1,5 @@
-import Sequelize, { Model } from 'sequelize';
+import Sequelize from 'sequelize';
+const Model = Sequelize.Model;
 
 export default class Categoria extends Model {
   static init(sequelize) {

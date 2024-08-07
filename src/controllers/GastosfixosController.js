@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
-import Gastosfixos from '../models/Gastosfixos';
-import Conta from '../models/Conta';
-import User from '../models/User';
+import Gastosfixos from '../models/Gastosfixos.js';
+import Conta from '../models/Conta.js';
+import User from '../models/User.js';
 
 class GastosfixosController {
   async create(req, res) {
