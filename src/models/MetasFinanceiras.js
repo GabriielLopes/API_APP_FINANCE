@@ -33,15 +33,15 @@ export default class MetasFinanceiras extends Model {
   }
 
   async atualizarSaldo(depositos) {
-    parseFloat(this.saldo_meta) += parseFloat(depositos.valor);
+    this.saldo_meta = parseFloat(this.saldo_meta) + parseFloat(depositos.valor);
     await this.save();
   }
 
   async reverterSaldo(depositos) {
-    parseFloat(this.saldo_meta) -= parseFloat(depositos.valor);
+    this.saldo_meta = parseFloat(this.saldo_meta) - parseFloat(depositos.valor);
     await this.save();
   }
-  
+
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id' });
     this.belongsTo(models.Categoria, { foreignKey: 'categoria_id' });
