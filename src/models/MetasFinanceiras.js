@@ -41,7 +41,6 @@ export default class MetasFinanceiras extends Model {
     parseFloat(this.saldo_meta) -= parseFloat(depositos.valor);
     await this.save();
   }
-
   static associate(models) {
     this.belongsTo(models.User, { foreignKey: 'user_id' });
     this.belongsTo(models.Categoria, { foreignKey: 'categoria_id' });
