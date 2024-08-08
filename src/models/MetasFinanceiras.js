@@ -33,12 +33,12 @@ export default class MetasFinanceiras extends Model {
   }
 
   async atualizarSaldo(depositos) {
-    this.saldo_meta += parseFloat(depositos.valor);
+    parseFloat(this.saldo_meta) += parseFloat(depositos.valor);
     await this.save();
   }
 
   async reverterSaldo(depositos) {
-    this.saldo_meta -= parseFloat(depositos.valor);
+    parseFloat(this.saldo_meta) -= parseFloat(depositos.valor);
     await this.save();
   }
 
