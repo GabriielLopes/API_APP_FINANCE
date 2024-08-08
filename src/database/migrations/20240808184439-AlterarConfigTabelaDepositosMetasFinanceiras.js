@@ -16,6 +16,7 @@ module.exports = {
 
   async down(queryInterface) {
     await queryInterface.changeColumn("depositosmetasfinanceiras", "user_id", {
+      type: Sequelize.INTEGER,
       references: {
         model: 'users',
         key: 'id'
