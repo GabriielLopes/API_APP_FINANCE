@@ -24,6 +24,8 @@ module.exports = {
           model: 'users',
           key: 'id',
         },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
       meta_id: {
         type: Sequelize.INTEGER,
@@ -31,6 +33,8 @@ module.exports = {
           model: 'metas_financeiras',
           key: 'id',
         },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
       created_at: {
         type: Sequelize.DATE,

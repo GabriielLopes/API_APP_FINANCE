@@ -24,7 +24,7 @@ module.exports = {
       },
       planejamento_mensal_id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'planejamentomensal',
           key: 'id',
