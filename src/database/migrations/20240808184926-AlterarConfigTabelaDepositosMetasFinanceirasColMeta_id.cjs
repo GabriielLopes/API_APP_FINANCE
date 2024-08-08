@@ -2,7 +2,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.changeColumn('depositosmetasfinanceieras', 'meta_id', {
+    await queryInterface.changeColumn('depositosmetasfinanceiras', 'meta_id', {
       type: Sequelize.INTEGER,
       references: {
         model: 'metas_financeiras',
@@ -14,7 +14,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.changeColumn('depositosmetasfinanceieras', 'meta_id', {
+    await queryInterface.changeColumn('depositosmetasfinanceiras', 'meta_id', {
       type: Sequelize.INTEGER,
       references: {
         model: 'metas_financeiras',

@@ -5,7 +5,7 @@ dotenv.config();
 
 export default {
   dialect: 'postgres',
-  host: process.env.DATABASE_HOST,
+  host: process.env.PGHOST,
   username: process.env.PGUSER,
   password: process.env.PGPASSSWORD,
   database: process.env.PGDATABASE,
