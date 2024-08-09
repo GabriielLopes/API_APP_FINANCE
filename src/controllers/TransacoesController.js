@@ -147,20 +147,19 @@ class TransacoesController {
         })
       }
 
+      const descricaoNormalizada = req.params.descricao.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
       const transacoes = await Transacoes.findAll({
         where: {
           conta_id: req.params.idConta,
-          descricao: { [Op.like]: `%${req.params.descricao}`}
         },
       })
 
-      if (transacoes.length <= 0) {
-        return res.status(400).json({
-          errors: 'Não existe transações com essa descrição!'
-        })
-      }
-
-      return res.json(transacoes);
+      const transacoesFiltradas = transacoes.filter((transacao) => {
+        const regex = new RegExp(descricaoNormalizada)
+        return transacao.descricaoNormalizada === descricaoNormalizada || regex.test(transacao.descricaoNormalizada);
+      })
+      return res.json(transacoesFiltradas);
     } catch (error) {
       console.log(error)
       return res.status(500).json({

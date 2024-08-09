@@ -21,9 +21,19 @@ export default class Transacoes extends Model {
         descricao: {
           type: Sequelize.STRING,
         },
+
+        descricaoNormalizada: {
+          type: Sequelize.VIRTUAL,
+          get() {
+            return this.descricao.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase();
+          }
+          
+        }
       },
       {
         sequelize,
+        underscored: false,
+        tableName: 'transacoes'
       },
     );
 
