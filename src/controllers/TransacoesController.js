@@ -122,6 +122,63 @@ class TransacoesController {
       });
     }
   }
+
+  async find(req, res) {
+    try {
+      if (!req.params.idConta) {
+        return res.status(400).json({
+          errors: 'Oops! Você precisa informar o id de sua conta bancária!'
+        })
+      }
+
+      if (!req.params.descricao) {
+        return res.status(400).json({
+          errors: 'Oops! Você precisa informar a descrição'
+        })
+      }
+
+      const conta = await Conta.findByPk(idConta);
+
+      if (!conta || conta.length <= 0) {
+        return res.status(400).json({
+          errors: 'Oops! Não existe conta bancária com este ID!'
+        })
+      }
+
+      const transacoes = await Transacoes.findAll({
+        where: {
+          conta_id: idConta
+        }
+      })
+
+      if (!transacoes || transacoes.length <= 0) {
+        return res.status(400).json({
+          errors: 'Oops! Não existe transações com o ID dessa conta bancária!'
+        })
+      }
+
+      const transacoesFiltradas = Transacoes.findAll({
+        where: {
+          descricao: {
+            $regex: new RegExp(req.params.descricao, 'i')
+          }
+        }
+      })
+
+      if ((await transacoesFiltradas).length <= 0) {
+        return res.status(400).json({
+          errors: 'Não existe transações com essa descrição!'
+        })
+      }
+
+      return res.json(transacoesFiltradas);
+    } catch (error) {
+      return res.status(500).json({
+        errors: 'Ocorreu um erro ao buscar as transações'
+      })
+    }
+
+  }
 }
 
 export default new TransacoesController();
