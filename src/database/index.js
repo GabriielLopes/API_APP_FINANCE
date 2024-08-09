@@ -11,9 +11,14 @@ import MetasFinanceiras from '../models/MetasFinanceiras.js';
 import DepositosMetasFinanceiras from '../models/depositosMetasFinanceiras.js';
 import PlanejamentoMensal from '../models/PlanejamentoMensal.js';
 import PlanejamentoMensalCategorias from '../models/PlanejamentoMensalCategorias.js';
+import Cartoes from '../models/Cartoes.js';
+import TransacoesCartao from '../models/TransacoesCartao.js';
 
-const models = [User, Categoria, Conta, Transacoes, Gastosfixos, Foto, UserConfig,
-  MetasFinanceiras, DepositosMetasFinanceiras, PlanejamentoMensal, PlanejamentoMensalCategorias];
+const models = [
+  User, Categoria, Conta, Transacoes, Gastosfixos, Foto, UserConfig,
+  MetasFinanceiras, DepositosMetasFinanceiras, PlanejamentoMensal, PlanejamentoMensalCategorias,
+  Cartoes, TransacoesCartao
+];
 
 const connection = new Sequelize(databaseConfig);
 
