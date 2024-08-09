@@ -1,6 +1,8 @@
 import Conta from '../models/Conta.js';
 import Transacoes from '../models/Transacoes.js';
 import User from '../models/User.js';
+import pkg from 'sequelize';
+const { Op } = pkg;
 
 class TransacoesController {
   async create(req, res) {
@@ -137,7 +139,7 @@ class TransacoesController {
         })
       }
 
-      const conta = await Conta.findByPk(idConta);
+      const conta = await Conta.findByPk(req.params.idConta);
 
       if (!conta || conta.length <= 0) {
         return res.status(400).json({
@@ -147,32 +149,20 @@ class TransacoesController {
 
       const transacoes = await Transacoes.findAll({
         where: {
-          conta_id: req.params.id
-        }
+          conta_id: req.params.idConta,
+          descricao: { [Op.like]: `%${req.params.descricao}`}
+        },
       })
 
-      if (!transacoes || transacoes.length <= 0) {
-        return res.status(400).json({
-          errors: 'Oops! Não existe transações com o ID dessa conta bancária!'
-        })
-      }
-
-      const transacoesFiltradas = Transacoes.findAll({
-        where: {
-          descricao: {
-            $regex: new RegExp(req.params.descricao, 'i')
-          }
-        }
-      })
-
-      if ((await transacoesFiltradas).length <= 0) {
+      if (transacoes.length <= 0) {
         return res.status(400).json({
           errors: 'Não existe transações com essa descrição!'
         })
       }
 
-      return res.json(transacoesFiltradas);
+      return res.json(transacoes);
     } catch (error) {
+      console.log(error)
       return res.status(500).json({
         errors: 'Ocorreu um erro ao buscar as transações'
       })
