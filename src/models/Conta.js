@@ -39,7 +39,6 @@ export default class Conta extends Model {
   }
 
   async atualizarSaldo(transacoes) {
-    console.log(transacoes.tipo);
     if (transacoes.tipo === 'Receita') {
       this.saldo = parseFloat(this.saldo) + parseFloat(transacoes.valor);
     }
