@@ -147,7 +147,7 @@ class TransacoesController {
 
       const transacoes = await Transacoes.findAll({
         where: {
-          conta_id: idConta
+          conta_id: req.params.id
         }
       })
 
