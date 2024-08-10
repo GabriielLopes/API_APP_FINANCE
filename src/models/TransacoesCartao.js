@@ -29,8 +29,8 @@ export default class TransacoesCartao extends Model {
       },
       {
         sequelize,
+        tableName: 'transacoesCartao',
         underscored: false,
-        tableName: 'transacoesCartao'
       }
     )
   }

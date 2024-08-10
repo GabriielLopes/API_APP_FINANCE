@@ -1,10 +1,11 @@
-import Cartoes from "../models/Cartoes";
-import User from "../models/User";
-import Conta from "../models/Conta";
+import Cartoes from "../models/Cartoes.js";
+import User from "../models/User.js";
+import Conta from "../models/Conta.js";
 
 class CartoesController {
   async create(req, res) {
     try {
+      console.log(req.body)
       if (!req.body.user_id) {
         return res.status(400).json({
           errors: 'Você precisa informar o Id de usuário!',
@@ -13,7 +14,7 @@ class CartoesController {
 
       const user = await User.findByPk(req.body.user_id);
 
-      if (!user || user.length <= 0) {
+      if (!user) {
         return res.status(400).json({
           errors: 'O usuário informado não existe!',
         })
@@ -25,11 +26,11 @@ class CartoesController {
         });
       }
 
-      const conta = await Conta.findByPk(req.params.conta_id);
+      const conta = await Conta.findByPk(1);
 
-      if (!conta || conta.length <= 0) {
+      if (!conta) {
         return res.status(400).json({
-          errors: 'A conta informada não existe!'
+          error: 'A conta informada não existe!'
         })
       }
 
@@ -37,21 +38,22 @@ class CartoesController {
 
       return res.json(cartao);
     } catch (error) {
+      console.log(error)
       res.status(500).json({
-        errors: 'Ocorreu um erro ao realizar sua requisição!'
+        errors: "Ocorreu um erro ao realizar sua requisição!"
       })
     }
   }
 
   async index(req, res) {
     try {
-      if (req.params.user_id) {
+      if (!req.params.user_id) {
         return res.status(400).json({
-          errors: 'Você precisa informar o do usuário!'
+          errors: 'Você precisa informar o id do usuário!'
         })
       }
       const user = await User.findByPk(req.params.user_id);
-      if (!user || user.length <= 0) {
+      if (!user) {
         return res.status(400).json({
           errors: 'O usuário informado não existe!'
         })
@@ -61,7 +63,7 @@ class CartoesController {
           user_id: req.params.user_id
         }
       })
-      if (cartoes.length <= 0 || cartoes === '') {
+      if (!cartoes || cartoes.length <=0) {
         return res.status(400).json({
           errors: 'Não existe cartões para o usuário informado!'
         });
@@ -76,7 +78,7 @@ class CartoesController {
 
   async update(req, res) {
     try {
-      if (req.params.id) {
+      if (!req.params.id) {
         return res.status(400).json({
           errors: 'Você precisa informar o Id do cartão!'
         })
@@ -98,7 +100,7 @@ class CartoesController {
 
   async delete(req, res) {
     try {
-      if (req.params.id) {
+      if (!req.params.id) {
         return res.status(400).json({
           errors: 'Você precisa informar o Id do cartão!'
         })

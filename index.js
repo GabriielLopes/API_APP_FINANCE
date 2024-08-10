@@ -28,6 +28,7 @@ import depositosMetasFinanceirasRoutes from './src/routes/depositosMetasFinancei
 import planejamentoMensalRoutes from './src/routes/planejamentoMensal.Routes.js';
 import planejamentoMensalCategoriasRoutes from './src/routes/planejamentoMensalCategorias.Routes.js';
 import cartoesRoutes from './src/routes/cartoes.Routes.js';
+import transacoesCartaoRoutes from './src/routes/transacoesCartao.Routes.js';
 
 /* const whiteList = [
   'https://app-finance-git-master-gibilopes-projects.vercel.app/',
@@ -118,6 +119,8 @@ class App {
     this.app.use('/planejamento-mensal-categorias/', planejamentoMensalCategoriasRoutes);
     // rotas de cartoes
     this.app.use('/cartoes/', cartoesRoutes);
+    // rotas de transacoes do cartões
+    this.app.use('/transacoes-cartao/', transacoesCartaoRoutes);
   }
 }
 
