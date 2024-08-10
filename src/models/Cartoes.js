@@ -41,7 +41,13 @@ export default class Cartoes extends Model {
 
   async atualizarLimite(transacoesCartao) {
     if (this.tipo === 'Crédito') {
-      this.limite = parseFloat(this.limite) - parseFloat(transacoesCartao.valor);
+      if (parseFloat(this.limite) >= parseFloat(transacoesCartao.valor)) {
+        this.limite = parseFloat(this.limite) - parseFloat(transacoesCartao.valor);
+      } else {
+        return res.status(400).json({
+          errors: 'Você não tem limite suficiente!'
+        })
+      }
     }
     return this.save();
   }
