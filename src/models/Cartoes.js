@@ -17,6 +17,10 @@ export default class Cartoes extends Model {
           type: Sequelize.DECIMAL(10, 2),
           allowNull: true,
         },
+        limiteMaximo: {
+          type: Sequelize.DECIMAL(10, 2),
+          allowNull: true,
+        },
         diaVencFatura: {
           type: Sequelize.INTEGER,
           allowNull: false,
