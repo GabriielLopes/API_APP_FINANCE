@@ -43,7 +43,7 @@ export default class Conta extends Model {
       this.saldo = parseFloat(this.saldo) + parseFloat(transacoes.valor);
     }
     if (transacoes.tipo === 'Despesa') {
-      if (this.saldo >= transacoes.valor) {
+      if (parseFloat(this.saldo) >= parseFloat(transacoes.valor)) {
         this.saldo = parseFloat(this.saldo) - parseFloat(transacoes.valor);
       }
     }
